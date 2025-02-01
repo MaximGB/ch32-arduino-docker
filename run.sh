@@ -30,7 +30,7 @@ docker run --rm \
            --env DISPLAY=$DISPLAY \
            --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
            --volume /run/dbus/system_bus_socket:/run/dbus/system_bus_socket:ro \
-           --volume .:/home/arduino \
+           --volume ./home/arduino:/home/arduino \
            $(test -e /dev/ttyUSB0 && echo "--device=/dev/ttyUSB0" | xargs) \
            $(test -e /dev/ttyACM0 && echo "--device=/dev/ttyACM0" | xargs) \
            --name arduino-ide \

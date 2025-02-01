@@ -71,6 +71,7 @@ WORKDIR /home/${USERNAME}
 
 # Installing WC32V003 Arduino core to user home directory
 ARG ARDUINO_CLI=/opt/arduino-ide/resources/app/lib/backend/resources/arduino-cli 
+RUN ${ARDUINO_CLI} update 
 ARG WCH_ARDUINO_CORE_URL=https://github.com/openwch/board_manager_files/raw/main/package_ch32v_index.json
 RUN ${ARDUINO_CLI} --additional-urls ${WCH_ARDUINO_CORE_URL} core install WCH:ch32v
 # WCH:ch32v Arduino core contains WCH SDK which contains some required so-libraries which also should be installed
@@ -79,4 +80,3 @@ RUN cd ~/.arduino15/packages/WCH/tools/beforeinstall/1.0.0/ && echo ${USERNAME} 
 
 # Run Arduino-IDE upon startup
 ENTRYPOINT ["/opt/arduino-ide/arduino-ide"]
-#ENTRYPOINT ["/bin/bash"]
